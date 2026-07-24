@@ -80,6 +80,9 @@ function StartChoice({
           title="GitHub repository"
         />
       </div>
+      <p className="mt-4 text-sm text-muted-foreground">
+        This is a public demo. Requests may be rate limited.
+      </p>
     </div>
   );
 }
