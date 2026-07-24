@@ -15,8 +15,9 @@ sandbox.domain(3000); // "https://sb-<subdomain>.vercel.run"
 - Ports can also be added later with `sandbox.update({ ports })`. `start_dev` uses
   this to expose the port selected by the model before it launches the server.
 - URLs are stable across stop and resume.
-- `start_dev` probes the public URL before returning success. An unreachable server
-  is stopped so its port does not block a corrected retry.
+- `start_dev` probes the public URL for up to 45 seconds while watching for early
+  process exit. An unreachable server is stopped so its port does not block a
+  corrected retry, and bounded stdout/stderr are returned to the agent for diagnosis.
 
 ## Resolving the URL from Eve
 

@@ -2,16 +2,19 @@
 
 An open-source coding agent built with [Eve](https://eve.dev) and Vercel Sandbox.
 
-Eve Code is a compact starting point for building a browser-based coding agent. It
-combines Eve's durable sessions and streaming with isolated Vercel Sandboxes,
-Convex persistence, and a small web interface around the core coding loop. Web
-projects run directly from the sandbox with a live preview and hot reload. The
-codebase stays deliberately small so its model, instructions, tools, and interface
-can be adapted to different use cases.
+Eve Code is a compact reference implementation that demonstrates how to build a
+browser-based coding agent with Eve. It combines Eve's durable sessions and
+streaming with isolated Vercel Sandboxes, Convex persistence, and a small web
+interface around the core coding loop. Web projects run directly from the sandbox
+with a live preview and hot reload. The codebase stays deliberately small so its
+model, instructions, tools, and interface can be understood and adapted.
 
-> Eve Code is a starting point, not a hosted multi-user product. Authentication,
-> session ownership, and pull request workflows are out of scope. Keep deployments
-> private until you add the necessary product boundaries.
+> [!WARNING]
+> Eve Code is an unauthenticated reference implementation, not a hosted multi-user
+> product. In a public deployment, every visitor can access the shared sessions and
+> workspaces. Sandbox preview URLs are also public and unauthenticated. Do not use
+> private code, credentials, secrets, or sensitive data without first adding the
+> necessary security boundaries.
 
 ## Features
 
@@ -39,6 +42,23 @@ While a turn is running, the browser follows Eve's live stream; when it finishes
 the Convex checkpoint becomes the durable history and synchronizes every open
 client. The workspace browser, command logs, and preview controls all connect to
 the same sandbox, so every surface reflects the environment the agent is using.
+
+## Security and scope
+
+Eve Code intentionally leaves authentication, session ownership, quotas, and pull
+request workflows out of scope:
+
+- A publicly reachable deployment has no user isolation. Conversations and
+  workspace files are shared with anyone who can access the app.
+- Starting a preview exposes the selected sandbox port through a public,
+  unauthenticated URL. Anyone with that URL can access everything the development
+  server makes available.
+- A Vercel Sandbox isolates code execution from the host. It does not make the
+  preview private or provide access control between visitors.
+
+Keep deployments private and use only non-sensitive code until authentication,
+authorization, ownership, and preview protection are implemented. These boundaries
+can be added by applications that use Eve Code as a starting point.
 
 ## Run locally
 

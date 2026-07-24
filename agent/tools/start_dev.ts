@@ -1,11 +1,12 @@
 import { Sandbox } from "@vercel/sandbox";
 import { defineTool } from "eve/tools";
 
-import { waitForPreview } from "@/agent/lib/preview";
+import { verifyPreviewProcess } from "@/agent/lib/preview";
 import { previewOutputSchema, previewRunSchema } from "@/lib/preview";
 
 export default defineTool({
-  description: "Start a development server and verify its public sandbox preview.",
+  description:
+    "Start a development server and verify its public sandbox preview. Failed startup returns bounded stdout and stderr so you can fix the cause and retry.",
   inputSchema: previewRunSchema,
   outputSchema: previewOutputSchema,
   async execute({ command, port }, ctx) {
@@ -14,12 +15,7 @@ export default defineTool({
     await sandbox.update({ ports: [port] }, { signal: ctx.abortSignal });
     const server = await session.spawn({ command });
     const url = sandbox.domain(port);
-    try {
-      await waitForPreview(url, port, ctx.abortSignal);
-      return { sandboxId: session.id, url };
-    } catch (error) {
-      await Promise.resolve(server.kill()).catch(() => undefined);
-      throw error;
-    }
+    await verifyPreviewProcess(server, url, port, ctx.abortSignal);
+    return { sandboxId: session.id, url };
   },
 });
