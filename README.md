@@ -2,6 +2,14 @@
 
 An open-source coding agent built with [Eve](https://eve.dev) and Vercel Sandbox.
 
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/9e8d2f8b-6910-43e6-9392-61cd618badcb"
+    alt="Eve Code demo"
+    width="900"
+  >
+</p>
+
 Eve Code is a compact reference implementation that demonstrates how to build a
 browser-based coding agent with Eve. It combines Eve's durable sessions and
 streaming with isolated Vercel Sandboxes, Convex persistence, and a small web
