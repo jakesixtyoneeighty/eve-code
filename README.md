@@ -10,32 +10,38 @@ An open-source coding agent built with [Eve](https://eve.dev) and Vercel Sandbox
   >
 </p>
 
-Eve Code is a compact reference implementation that demonstrates how to build a
-browser-based coding agent with Eve. It combines Eve's durable sessions and
-streaming with isolated Vercel Sandboxes, Convex persistence, and a small web
+Eve Code is an open-source coding agent for building software in the browser. It
+combines Eve with isolated Vercel Sandboxes, Convex persistence, and a small web
 interface around the core coding loop. Web projects run directly from the sandbox
-with a live preview and hot reload. The codebase stays deliberately small so its
-model, instructions, tools, and interface can be understood and adapted.
+with a live preview and hot reload. The codebase stays deliberately small and can
+be used as a starting point for building your own coding agent with Eve.
 
 > [!WARNING]
-> Eve Code is an unauthenticated reference implementation, not a hosted multi-user
-> product. In a public deployment, every visitor can access the shared sessions and
-> workspaces. Sandbox preview URLs are also public and unauthenticated. Do not use
-> private code, credentials, secrets, or sensitive data without first adding the
-> necessary security boundaries.
+> Eve Code does not yet implement authentication or user isolation. Use it with
+> caution until those boundaries are in place. Every visitor to a public deployment
+> can access the shared sessions and workspaces, and sandbox preview URLs are public
+> and unauthenticated. Do not use private code, credentials, secrets, or sensitive
+> data before implementing the necessary security boundaries.
 
 ## Features
 
-- 🛠️ Build projects in an isolated, persistent Vercel Sandbox, starting from an
-  empty workspace or a public GitHub repository.
-- 💾 Conversations are durable and real-time: active turns stream from Eve, while
-  completed turns synchronize through Convex.
-- 👀 Reasoning and tool calls appear as individual activities, with elapsed time
-  and live command output.
-- 📝 File edits render as readable diffs with addition and deletion counts.
-- 🌐 Run web projects on a live preview URL with hot reload, and restore the
-  server after the sandbox goes idle.
-- 🗂️ Navigate the workspace and inspect syntax-highlighted source files.
+- **A fully visible coding loop:** Watch tool calls, live shell output, and file
+  diffs as the agent works.
+- **Live previews with HMR:** Open the app directly from Vercel Sandbox and see
+  every change instantly.
+- **Built-in workspace browser:** Navigate the file tree and inspect the source
+  without leaving the chat.
+- **Durable, real-time sessions:** Conversations synchronized across clients.
+- **Model selection:** Switch models from the composer.
+- **Voice input:** Real-time transcriptions using AI SDK.
+- **Start fresh or from GitHub:** Begin with an empty workspace or a public
+  repository.
+
+## Roadmap
+
+- Authentication and personal workspaces for multi-user deployments.
+- GitHub integration for private repositories and pull request workflows.
+- In-browser file editing.
 
 ## How it works
 
@@ -61,8 +67,6 @@ request workflows out of scope:
 - Starting a preview exposes the selected sandbox port through a public,
   unauthenticated URL. Anyone with that URL can access everything the development
   server makes available.
-- A Vercel Sandbox isolates code execution from the host. It does not make the
-  preview private or provide access control between visitors.
 
 Keep deployments private and use only non-sensitive code until authentication,
 authorization, ownership, and preview protection are implemented. These boundaries
