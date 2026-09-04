@@ -64,8 +64,8 @@ function StartChoice({
 }) {
   return (
     <div className="w-full max-w-xl">
-      <h2 className="text-2xl font-medium tracking-tight">What should we build?</h2>
-      <p className="mt-1 text-muted-foreground">Choose a starting point for this session.</p>
+      <h2 className="text-2xl font-medium tracking-tight">Let's buiild somethingthing.?</h2>
+      <p className="mt-1 text-muted-foreground">Just to let you know. Mojo doesn't like boring project.</p>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <StartOption
           description="Start with an empty workspace"
@@ -80,10 +80,8 @@ function StartChoice({
           title="GitHub repository"
         />
       </div>
-      <p className="mt-4 text-sm text-muted-foreground">
-        This is a public demo. Requests may be rate limited.
-      </p>
-    </div>
+    
+</div>
   );
 }
 

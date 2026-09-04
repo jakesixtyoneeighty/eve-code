@@ -129,7 +129,7 @@ export function AppSidebar({
         <div className="flex h-10 shrink-0 items-center justify-between px-2">
           <div className="flex min-w-0 items-center gap-2.5">
             <AlignLeft aria-hidden="true" className="text-muted-foreground" />
-            <span className="truncate">Eve Code</span>
+            <span className="truncate">Mojo Code</span>
           </div>
           <Button
             aria-label="Close sessions"
