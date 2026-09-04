@@ -64,8 +64,8 @@ function StartChoice({
 }) {
   return (
     <div className="w-full max-w-xl">
-      <h2 className="text-2xl font-medium tracking-tight">Let's buiild somethingthing.?</h2>
-      <p className="mt-1 text-muted-foreground">Just to let you know. Mojo doesn't like boring project.</p>
+      <h2 className="text-2xl font-medium tracking-tight">Let's buiild something already.</h2>
+      <p className="mt-1 text-muted-foreground">Just to let you know. Mojo doesn't like boring shit.</p>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <StartOption
           description="Start with an empty workspace"
